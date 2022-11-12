@@ -1,19 +1,19 @@
+from sortedcontainers import SortedList
 class MedianFinder:
-    arr = []
-
     def __init__(self):
-        self.Medianfinder = []
+        self.s = SortedList()
 
     def addNum(self, num: int) -> None:
-        k = self.arr
-        k.append(num)
+        self.s.add(num)
 
-    def findMedian(self):
-        k = self.arr
-        n = len(k)
-        if n % 2 == 0:
-            median = (k[int(n / 2)] + k[int(n / 2) - 1]) / 2
-            print(median)
-        else:
-            median = k[n // 2]
-            print(median)
+    def findMedian(self) -> float:
+        l = len(self.s)
+        if l%2==0:
+            return (self.s[l//2-1]+self.s[l//2])/2
+        return self.s[l//2]
+
+
+# Your MedianFinder object will be instantiated and called as such:
+# obj = MedianFinder()
+# obj.addNum(num)
+# param_2 = obj.findMedian()
